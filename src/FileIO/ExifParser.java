@@ -7,12 +7,15 @@ import com.thebuzzmedia.exiftool.core.StandardTag;
 import com.thebuzzmedia.exiftool.exceptions.UnsupportedFeatureException;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Map;
 
 import static java.util.Arrays.asList;
 
 /**
  * (Depth Mapper using OpenCV 4.1.1)
+ * 
+ * NOT YET FUNCTIONING
  * 
  * Parses image EXIF data using an enhanced Java integration of Phil Harvey's ExifTool
  * @see https://github.com/mjeanroy/exiftool
@@ -24,20 +27,42 @@ import static java.util.Arrays.asList;
  */
 public class ExifParser {
 	
+	public static boolean debug = true;
 	private final static String slash = File.separator;
-	private static String path = System.getProperty("user.dir") + slash + "src" + slash + "exiftool(-k)";
+	private static String path = System.getProperty("user.dir") + slash + "src" + slash + "exiftool(-k).exe";
+	private static ExifTool exifTool;	
 
+
+    public static Map<Tag, String> parse(File image) throws Exception {
+    	try {
+        	if (debug) {
+    		System.out.println("Launching ExifTool...");
+        	System.out.println(path);
+        	}
+    	        exifTool = new ExifToolBuilder()
+    	        	.withPath(path)
+    	            //.withPoolSize(10)  // Allow 10 process
+    	           // .enableStayOpen()
+    	            .build(); 
+    	        } catch (UnsupportedFeatureException ex) {
+    	        	exifTool = new ExifToolBuilder().build(); // defaults to the most basic exifTool process instance
+    	        }
+    	
+    	try {
+        return exifTool.getImageMeta(image, asList(StandardTag.APERTURE, StandardTag.ISO));
+    	} catch (Exception E) {
+    		System.out.println("Error extracting Exif data from files.");
+    		return null;
+    	}
+    }
+    
     public static void main(String[] args) throws Exception {
-
-    	System.out.println(System.getProperty("user.dir"));
-
-        ExifTool exifTool = new ExifToolBuilder()
-        	.withPath(path)
-            .withPoolSize(10)  // Allow 10 process
-            .enableStayOpen()
-            .build();
-
-        // Start 10 threads and use exifTool in parallel.
-        // ...
+    //	for (String image : args) {
+    		try {
+				System.out.println("Tags: " + ExifParser.parse(new File(System.getProperty("user.dir") + slash + "src" + slash + "FileIO" + slash + "test1.jpg")));
+			} finally {
+				exifTool.close();
+			}
+    //	}
     }
 }

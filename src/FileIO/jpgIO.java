@@ -31,7 +31,8 @@ public class jpgIO implements fileManagement {
 
 	@Override
 	public ArrayList<Mat> sortInput(ArrayList<?> imageStack) {
-		// TODO Auto-generated method stub
+		ExifParser exifParser = new ExifParser();
+		//if image has Exif data, order, else do nothing.
 		return null;
 	}
 
