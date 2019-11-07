@@ -83,15 +83,14 @@ public class Mapper {
 								{
 									delta = gradient[i].get(x,y)[0];
 									image2sample = i;
-								}
-								
+								}	
 							}
 							//places the pixel of the sharpest image in the stack at a given coordinate
 							focalStack.put(x, y, inputs.get(image2sample).get(x, y));
 							
 							if(depthMap) {
+								//shades the depth of the image with the sharpest pixel at a given coordinate
 								map.put(x, y, depth.map(image2sample));
-								
 							}
 							pb.step();
 						}
