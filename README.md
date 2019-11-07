@@ -1,8 +1,8 @@
 <h1>Depth Mapper</h1>
 
-[WIP] Generates a depth map from a focal stack of images.<sup>[1]</sup> Supports Jpeg, soon to support DNG.
+Generates a depth map from a focal stack of images.<sup>[1]</sup> Supports Jpeg, soon to support DNG.
 
-Makes use of OpenCV and an enhanced Java implementation of ExifTool.<sup>[2]</sup>
+Makes use of OpenCV ~~and an enhanced Java implementation of ExifTool.<sup>[2]</sup>~~
 
 <h2> Installation </h2>
 
