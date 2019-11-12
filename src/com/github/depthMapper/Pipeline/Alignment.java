@@ -31,7 +31,7 @@ public class Alignment {
 		    grayStack.add((Mat)iterator.next().clone());  
 		}
 		
-//		int warp_mode = MOTION_EUCLIDEAN;
+		int warp_mode = MOTION_EUCLIDEAN;
 		
 		
 		
