@@ -25,7 +25,8 @@ public class Launcher {
 		System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
 		
 		//replace with input test image absolute path
-		String path = "C:\\Users\\Tony\\eclipse-workspace\\Depth Mapper\\src\\testImages\\Shallow_HighCount";
+		String path = "C:\\Users\\Tony\\eclipse-workspace\\Depth Mapper\\src\\testImages\\Shallow (High Count) [Processed]";
+
 		System.out.println("Depth Mapper v1.0");
 		Debug.on();
 		Debug.println();
