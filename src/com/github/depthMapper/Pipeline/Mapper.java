@@ -27,11 +27,23 @@ public class Mapper {
 
 	public Mapper(ArrayList<Mat> inputs)
 	{
+//		this.inputs.add(inputs.get(0));
+//		
+//		for (int i = 0; i < inputs.size() - 1; ++i) {
+//			this.inputs.add(Alignment.ECCalignment(inputs.get(i), inputs.get(i+1)));
+//		}
+		
 		this.inputs = inputs;
 	}
 	
 	public void setInputs(ArrayList<Mat> inputs)
 	{
+//		this.inputs.add(inputs.get(0));
+//		
+//		for (int i = 0; i < inputs.size() - 1; ++i) {
+//			this.inputs.add(Alignment.ECCalignment(inputs.get(i), inputs.get(i+1)));
+//		}
+		
 		this.inputs = inputs;
 	}
 	
