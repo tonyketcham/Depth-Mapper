@@ -8,6 +8,7 @@ import org.opencv.photo.Photo;
 
 import com.github.depthMapper.FileIO.FileManager;
 import com.github.depthMapper.FileIO.JPEG;
+import com.github.depthMapper.Pipeline.Alignment;
 import com.github.depthMapper.Pipeline.DepthShader;
 import com.github.depthMapper.Pipeline.Mapper;
 
@@ -34,6 +35,8 @@ public class Launcher {
 		FileManager io = new JPEG();
 		File[] files = io.grabDirectory(path);
 		ArrayList<Mat> stack = io.createStack(files);
+		
+		stack = Alignment.ECCalignAll(stack);
 		
 		Mapper mapper = new Mapper(stack);
 		Mat[] output = mapper.generate();
