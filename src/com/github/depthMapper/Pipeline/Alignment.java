@@ -107,23 +107,6 @@ public class Alignment {
 		return newStack;
 	}
 	
-	/**
-	 * Downscales an image by a given percentage.
-	 * @param input 
-	 * @param scale downscale percentage
-	 * @return
-	 */
-	public static Mat downscale(Mat input, double scale) throws Exception 
-	{
-		if (scale >= 1) {
-			throw new IllegalArgumentException("Given scale is greater than or equal to 1:" + scale + ". This will not downscale the image.");
-		}
-		Mat dst = new Mat();
-		Size size = new Size((int) input.cols() * scale, (int) input.rows() * scale);
-		Imgproc.resize(input, dst, size, Imgproc.INTER_AREA);
-		return dst;
-		
-	}
 	
 	public static void main(String[] args) throws Exception
 	{

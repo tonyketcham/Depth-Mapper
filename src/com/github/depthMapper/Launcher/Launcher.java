@@ -11,6 +11,7 @@ import com.github.depthMapper.FileIO.JPEG;
 import com.github.depthMapper.Pipeline.Alignment;
 import com.github.depthMapper.Pipeline.DepthShader;
 import com.github.depthMapper.Pipeline.Mapper;
+import com.github.depthMapper.Pipeline.Utils;
 
 /**
  * Depth Mapper using OpenCV 4.1.1
@@ -26,7 +27,7 @@ public class Launcher {
 		System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
 		
 		//replace with input test image absolute path
-		String path = "C:\\Users\\Tony\\eclipse-workspace\\Depth Mapper\\src\\testImages\\Shallow (High Count) [Processed]";
+		String path = "C:\\Users\\Tony\\eclipse-workspace\\Depth Mapper\\src\\testImages\\Shallow (High Count) [Processed] subset";
 
 		System.out.println("Depth Mapper v1.0");
 		Debug.on();
@@ -36,7 +37,9 @@ public class Launcher {
 		File[] files = io.grabDirectory(path);
 		ArrayList<Mat> stack = io.createStack(files);
 		
-		stack = Alignment.ECCalignAll(stack);
+		stack = Utils.denoiseAll(stack, 5);
+		
+	//	stack = Alignment.ECCalignAll(stack);
 		
 		Mapper mapper = new Mapper(stack);
 		Mat[] output = mapper.generate();
