@@ -41,7 +41,7 @@ public class Utils {
 	
 	public static Mat denoise(Mat input, int strength) {
 		Mat output = new Mat();
-		Photo.fastNlMeansDenoisingColored(input, output, strength, strength, 9, 21);
+		Photo.fastNlMeansDenoisingColored(input, output, strength, 1, 9, 21); //continue fiddling with these numbers to find the most appropriate settings.
 		return output;
 	}
 	
