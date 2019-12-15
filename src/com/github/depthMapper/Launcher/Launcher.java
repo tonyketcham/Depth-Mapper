@@ -25,9 +25,10 @@ public class Launcher {
 	public static void main(String[] args) throws Exception
 	{
 		System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+		String s = File.separator;
 		
 		//replace with input test image absolute path
-		String path = "C:\\Users\\Tony\\eclipse-workspace\\Depth Mapper\\src\\testImages\\Shallow (High Count) [Processed] subset";
+		String path = "." + s + "src" + s + "TestImages";
 
 		System.out.println("Depth Mapper v1.0.34");
 		Debug.on();
