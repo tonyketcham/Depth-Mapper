@@ -28,8 +28,9 @@ The algorithm for performing depth mapping considers the highest rate of change 
 <h4>Improvements</h4>
 
 - DNG file handling will be implemented for use of the generated depth map as an embedded map for the raw focal stack it represents.
-- The depth mapping algorithm will be significantly improved with image segmentation to constrain regions of pixels to a certain set of input files, as to reduce the noise of non-discriminable regions (regions with very little texture).
+- The depth mapping algorithm will be significantly improved with image segmentation to constrain regions of pixels to a certain set of input files, as to reduce the noise of non-discriminable regions (regions with very little texture). This reduces haloing around sharp edges.
 - Additional use of OpenCL to improve execution time of image alignment.
+
 
 <h2>Installation</h2>
 
