@@ -35,3 +35,5 @@ The algorithm for performing depth mapping considers the highest rate of change 
 <h2>Installation</h2>
 
 A Maven Eclipse project is provided. Make sure you have OpenCV 4.1.1 installed as a User Library in eclipse as 'opencv'. The project should function with OpenCV 3.* as well, however this has not been tested.
+
+The Launcher.java should be ran and the included folder of test images will be referenced to generate a depth map. Feel free to include your own image stack and play around with it!
