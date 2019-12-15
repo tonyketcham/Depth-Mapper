@@ -59,7 +59,7 @@ public class Utils {
 	}
 	
 	public static ArrayList<Mat> denoiseMulti(ArrayList<Mat> inputs, int strength) {
-		ArrayList<Mat> outputs = new ArrayList();
+		ArrayList<Mat> outputs = new ArrayList<Mat>();
 		Mat temp = new Mat();
 		for (int i = 0; i < inputs.size(); ++i) {
 			Photo.fastNlMeansDenoisingColoredMulti(inputs, temp, i,  1, strength);

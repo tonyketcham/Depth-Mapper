@@ -29,7 +29,7 @@ public class Launcher {
 		//replace with input test image absolute path
 		String path = "C:\\Users\\Tony\\eclipse-workspace\\Depth Mapper\\src\\testImages\\Shallow (High Count) [Processed] subset";
 
-		System.out.println("Depth Mapper v1.0");
+		System.out.println("Depth Mapper v1.0.34");
 		Debug.on();
 		Debug.println();
 		
@@ -37,20 +37,9 @@ public class Launcher {
 		File[] files = io.grabDirectory(path);
 		ArrayList<Mat> stack = io.createStack(files);
 		
-		stack = Utils.denoiseAll(stack, 5);
-		
-	//	stack = Alignment.ECCalignAll(stack);
-		
 		Mapper mapper = new Mapper(stack);
 		Mat[] output = mapper.generate();
 		Debug.println();
-		
-		
-		//Denoising of depth map. This implementation goes overboard and changes the map to an off-white.
-//		Debug.println("Denoising depth map...");		
-//		Mat denoisedDepthMap = new Mat();
-//		Photo.fastNlMeansDenoising(output[1], denoisedDepthMap, 3, 21);
-//		Debug.println();
 		
 		System.out.println("Saving Focus Stack...");
 		io.writeOutput(output[0], path + File.separator + "Focus Stacked");

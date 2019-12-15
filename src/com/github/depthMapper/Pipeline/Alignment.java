@@ -2,11 +2,8 @@ package com.github.depthMapper.Pipeline;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 import org.opencv.core.TermCriteria;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.video.Video;
