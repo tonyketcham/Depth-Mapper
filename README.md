@@ -9,17 +9,18 @@ This project strongly utilizes OpenCV and eventually OpenCL through [JavaCV](htt
 <h2>Example</h2>
 Take this highly textured scene of 32 input images:
 
-<h3>Depth Map</h3>
+<h3>Image in the Stack</h3>
 
-![Depth map of highly textured scene](/src/gitresources/Depth%20Map.jpg)
+![Image with shallow depth of field](/src/TestImages/_0009_Highly%20Textured%20Input%20-%2009.jpg)
 
 <h3>Focus Stack</h3>
 
 ![Focus stack of highly textured scene](/src/gitresources/Focus%20Stacked.jpg)
 
-<h3>First Image in the Stack</h3>
+<h3>Depth Map</h3>
 
-![Image with shallow depth of field](/src/TestImages/_0000_Highly%20Textured%20Input%20-%2000.jpg)
+![Depth map of highly textured scene](/src/gitresources/Depth%20Map.jpg)
+
 
 <h2>Current State + Future Improvements</h2>
 The algorithm for performing depth mapping considers the highest rate of change for a given pixel against every pixel at the same coordinate in the remaining images. As it is, the depth mapping performs best assuming images are aligned prior to input. The current alignment algorithm has a poor runtime for high megapixel image stacks (although it does provide quite an accurate alignment) but this time complexity can be improved greatly through a careful combination of ECC and homography-based image alignment. 
