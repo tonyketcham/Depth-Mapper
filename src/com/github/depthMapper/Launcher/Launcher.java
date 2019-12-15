@@ -38,6 +38,8 @@ public class Launcher {
 		File[] files = io.grabDirectory(path);
 		ArrayList<Mat> stack = io.createStack(files);
 		
+		stack = Alignment.ECCalignAll(stack);
+		
 		Mapper mapper = new Mapper(stack);
 		Mat[] output = mapper.generate();
 		Debug.println();
