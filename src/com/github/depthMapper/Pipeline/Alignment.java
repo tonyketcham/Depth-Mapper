@@ -21,14 +21,14 @@ import me.tongfei.progressbar.ProgressBarStyle;
 /**
  * (Depth Mapper using OpenCV 4.1.1)
  *
- * Aligns similar images using an Affine warp.
+ * Aligns similar images using warping methods.
  *
  * @author Tony Ketcham (ketcham@pnw.edu)
  * @version 1.0
  *
  */
 public class Alignment {
-	//Set first image in the stack as the image to which we should align
+	// Set first image in the stack as the image to which we should align
 	
 
 	/**
@@ -47,8 +47,8 @@ public class Alignment {
 		Imgproc.cvtColor(template, templateGray, Imgproc.COLOR_BGR2GRAY);
 		Imgproc.cvtColor(input, inputGray, Imgproc.COLOR_BGR2GRAY);
 		
-		//Think of aligning a stack of images as a video tracking problem
-		int warpMode = Video.MOTION_AFFINE;
+		// Think of aligning a stack of images as a video tracking problem
+		int warpMode = Video.MOTION_HOMOGRAPHY;
 		Mat warpMatrix = new Mat();
 		
 		 
@@ -59,7 +59,7 @@ public class Alignment {
 		    warpMatrix = Mat.eye(2, 3, CvType.CV_32FC1); //2x3 warp matrix
 		}
 		
-		//Termination criteria
+		// Termination criteria
 		int maxIterations = 2500; //maximum iterations or elements
 		double terminationEps = 1e-4; //desired accuracy
 		
@@ -70,7 +70,7 @@ public class Alignment {
 
 		
 		
-		//Warps the input to the template image, thus aligning the two
+		// Warps the input to the template image, thus aligning the two
 		if (warpMode != Video.MOTION_HOMOGRAPHY) {
 			Imgproc.warpAffine(input, alignedInput, warpMatrix, input.size(), Imgproc.WARP_INVERSE_MAP + Imgproc.INTER_LINEAR);
 		} else {
@@ -107,6 +107,7 @@ public class Alignment {
 		return newStack;
 	}
 	
+	// TO-DO add homography method
 	
 	public static void main(String[] args) throws Exception
 	{
